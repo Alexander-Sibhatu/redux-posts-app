@@ -1,0 +1,35 @@
+.post {
+    background: rgba(8, 11, 18, 0.585);
+    color: white;
+    padding: .5rem;
+    border-radius: .5rem;
+    width: 50%;
+}
+
+.posts {
+    background: rgb(159, 178, 180);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+* >.posts {
+    padding: 1rem;
+}
+
+.form {
+    background-color: yellow;
+    width: 40%;
+    display: flex;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+* >.form {
+    background-color: rgb(255, 149, 149);
+}
