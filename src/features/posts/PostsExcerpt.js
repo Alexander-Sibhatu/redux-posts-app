@@ -3,6 +3,8 @@ import TimeAgo from './TimeAgo';
 import ReactionButtons from './ReactionButtons';
 
 const PostsExcerpt = ({ post }) => {
+
+  // const postContent = post.body && post.PostAuthorcontent
   return (
     <article key={post.id} className='post'>
         <h3>{post.title}</h3>

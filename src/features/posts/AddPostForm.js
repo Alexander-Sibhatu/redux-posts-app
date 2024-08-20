@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { selectAllUsers } from '../users/usersSlice'
 
-import { postAdded }  from './postsSlice'
+import { addNewPost }  from './postsSlice'
 
 
 const AddPostForm = () => {
@@ -12,6 +12,7 @@ const AddPostForm = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [userId, setUserId] = useState('')
+    const [addRequestStatus, setAddRequestStatus]
 
     const users = useSelector(selectAllUsers);
 
