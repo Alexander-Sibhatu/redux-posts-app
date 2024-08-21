@@ -12,7 +12,9 @@ const AddPostForm = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [userId, setUserId] = useState('')
-    const [addRequestStatus, setAddRequestStatus]
+    const [addRequestStatus, setAddRequestStatus] = useState('idle')
+
+    const canSave = [title, content, userId].every(Boolean) && addRequestStatus === 'idle'
 
     const users = useSelector(selectAllUsers);
 
@@ -24,10 +26,19 @@ const AddPostForm = () => {
 
     const handlePost = (e) => {
         e.preventDefault();
-        if(title && content){
-            dispatch(postAdded(title, content, userId))
-            setTitle('')
-            setContent('')
+        if(canSave){
+            try {
+                setAddRequestStatus('pending')
+                dispatch(addNewPost({ title, body: content, userId})).unwrap()
+
+                setTitle('')
+                setContent('')
+                setUserId('')
+            } catch (error) {
+                console.log('Failed to save the post', error)
+            } finally {
+                setAddRequestStatus('idle')
+            }
         }
     }
 
@@ -61,8 +72,10 @@ const AddPostForm = () => {
                 onChange={handleContent}
             />
             <br />
-            <button onClick={handlePost}>
-                Add Post</button>
+            <button 
+                onClick={handlePost}
+                disabled={!canSave}
+            > Add Post</button>
         </form>
   )
 }
