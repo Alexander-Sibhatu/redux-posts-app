@@ -4,9 +4,9 @@ import ReactionButtons from './ReactionButtons';
 
 const PostsExcerpt = ({ post }) => {
 
-  // const postContent = post.body && post.PostAuthorcontent
+  console.log(post.content)
   return (
-    <article key={post.id} className='post'>
+    <article className='post'>
         <h3>{post.title}</h3>
         <p>{post.body.substring(0, 70)}</p>
         <p className='postCredit'>
